@@ -1,0 +1,22 @@
+! Control file for "fit_galaxy_bayesian" program
+! McMC control parameters first
+! Model parameters last
+! For model parameters, enter prior value, prior uncertainty (<0 for flat), est. posteriori uncertainty
+!
+      5                          ! number burn-in stages
+  10000                          ! number McMC iterations in a burn-in stage
+ 100000      100                 ! number of final McMC iterations; store every nth for PDFs (max 10^6)
+      0    F T T T               ! error-tolerant fitting flag (0=least-squares, 1=error-tolerant); data types to use (par,mu_x,mu_y,Vlsr)
+     1.    -937895               ! initial step_fraction for McMC parameter adjustments; RAN1 seed (large negative integer)
+     5.0    0.0      2.5    0  20.  !"Virial" noise (km/s), dist_min (kpc), dist_GC_min (kpc), Rot.Curve; MaxParUnc(%) 
+  8.4        -1.       0.16      ! Ro (kpc)              
+240.0       -10.       6.0       ! To (km/s)             
+ -0.2        -1.0      1.0       ! dT/dr (km/s/kpc)      
+ 11.1         2.0      1.8       ! Solar Motion Uo (km/s)   eg, SBD10 Uo = 11.1 +/- 2.0
+ 15.0        10.0      6.8       ! Solar Motion Vo (km/s)             Vo = 12.2 +/- 2.1
+  7.2         2.0      0.9       ! Solar Motion Wo (km/s)             Wo =  7.2 +/- 2.0
+ -3.0       -10.       6.8       ! Ao (km/s) Avg pec motion counter to Gal Rot (km/s)
+  3.0       -10.       2.1       ! Bo   "     "   "    "    toward Gal Cen     (km/s)
+  0.          0.       0.        ! a1: Alternative rotation curve parameter 1
+  0.          0.       0.        ! a2: Alternative rotation curve parameter 2
+  0.          0.       0.        ! a3: Alternative rotation curve parameter 3

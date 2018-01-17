@@ -1,0 +1,100 @@
+############################################################################################################################
+#Parameters for Methanol Maser Simulation   
+#Developed by H. van Langevelde and L.H. Quiroga-Nunez 
+#Simulating BeSSeL data 
+############################################################################################################################
+#Fundamental Galactic Parameters    
+############################################################################################################################
+r0=8.34 								/*Distance from the galactic center to the sun (kpc)*/
+v0t=240									/*Circular rotational speed of the sun (km/s)*/
+Rotation_Curve=-0.2						/*Rotation Curve(km s^-1 kpc^-1)*/
+usun=10.7								/*Radial inward Solar motion (km/s)*/
+vsun=15.6								/*Tangential Solar motion (km/s)*/
+wsun=8.9								/*Verticla Solar motion (km/s)*/
+############################################################################################################################
+#Spatial Distribution
+############################################################################################################################
+fat=0.35 								/*Standard deviation for the masers position wrt to closest arm (kpc)*/
+hz=0.025					  			/*Standard deviation of vertical position (kpc)*/
+halfmr=2.44								/*Disk Scale Lenght*/
+############################################################################################################################
+#Velocity Distribution
+############################################################################################################################
+v0r=0 									/*Mean radial velocity (km/s)*/
+sigvr=5									/*Standard deviation for radial velocity (km/s)*/
+sigva=9									/*Standard deviation for tangential velocity (km/s)*/
+v0z=0									/*Mean vertical velocity*/
+sigvz=5									/*Standard deviation for vertical velocity (km/s)*/
+############################################################################################################################
+#Mean source motion in U and V
+############################################################################################################################
+v0r_us=2.9								/*Mean source motion in U (km/s)*/
+sigvr_us=5.0							/*Standard deviation for mean source motion in U (km/s)*/
+v0t_vs=1.6								/*Mean source motion in V (km/s). Warning: contains an inner minus against the convetion*/
+sigva_vs=15.0							/*Standard deviation for mean source motion in V (km/s)*/
+############################################################################################################################
+#Luminosity Distribution 				as a power law N(L)=k*L^index...min_l<L<max_l in (L_sun)
+############################################################################################################################
+min_l=0.00000001						/*Minimum cut off luminosity*/
+max_l=0.001								/*Maximum cut off luminosity*/
+index=-1.432							/*Slope of the luminosity function*/
+############################################################################################################################
+#Truncations
+############################################################################################################################
+rtrunc=15 								/*Maximum distance or radius of the spiral arms final point (kpc)*/
+rmintrunc=3								/*Minimum distance or radius of the spiral arms final point (kpc)*/
+############################################################################################################################
+#Fragmentation of spiral arms
+############################################################################################################################
+nspirseg=40 							/*Number of semisegments to split the spiral arms in order to reproduce the spiralarms*/
+############################################################################################################################
+#Comparison with surveys
+############################################################################################################################
+MMB_sigma=4.0 							/*Sigma value of the MMB survey (1sigma=0.17Jy) to compare with the Luminosity Function*/
+Arecibo_sigma=1.0 						/*Sigma value of the Arecibo survey (1sigma=0.27Jy) to compare with the Luminosity Function*/
+############################################################################################################################
+#Number of sources
+############################################################################################################################
+nobj=1300 								/*Number of maser/points per simulation (entire galaxy)*/
+############################################################################################################################
+#Type of sample selection
+############################################################################################################################
+sam_selec=1								/*Sample selection (print out all sources=0)*/
+sam_complete=0							/*Include complete sample?*/
+sam_bri_dec=1							/*Sample Selection limited by brightest sources and declination*/
+many=1									/*How many samples?*/
+N_sour=1000								/*Number of brightest or faintest sources, if are more than one sample then write and array*/
+down_limit=-30							/*Declination limit down (up>delta>down), if are more than one sample then write and array*/
+up_limit=70								/*Declination limit up, if are more than one sample then write and array*/
+Bri_faint=0								/*More "faintest" (1) or more "brightest" (0) sources do you want?---->default brightest*/
+BeSSeL_include=0						/*Include current BeSSeL (100 brightest soruces at -30 < delta < 70) in simultaions)*/
+############################################################################################################################
+#Random Sample Selection limited by a defined number of sources (This section is not working so far)
+############################################################################################################################
+samp_rand=0								/*Random Sample Selection limited by a defined number of sources*/
+many_rand=3								/*How many samples?*/
+N_sour_rand=100,100,100					/*If yes, then Number of sources as array*/
+############################################################################################################################
+#Generate plots of the model
+############################################################################################################################
+plots=1
+############################################################################################################################
+#Uncertanties, Observable quantities and fudge factor
+############################################################################################################################
+Unc_confirmation=1						/*Assign uncertanties based on SNR detection.0=no->uncertanties=0.0 and then perfect data*/
+Push_betterunc=0						/*If unc_para>20%*parallax push these ucnertanties to 20%*parallax */
+Unc_confirmation_spec=0 				/*Assign specific uncertanties (2=yes by exact value, 1=yes by %, 0=no all are based on SNR)*/
+Unc_confirmation_percent=15				/*Percentage uncertanties respect to the measurement (previous question= 1)*/
+Values_Unc=0.05,0.05,0.1,0.25,0.5,1.0,2.0,5.0,10.0 /*Values for specific unc. (as much as samples) mas(/yr) (prev. 2up question=1)*/
+Perfect_data=0							/*No spread the observables but sigmas are not change*/
+Perfect_parallax=0						/*Perfect data for parallax, i.e. parallax_obs=gauss(parallax,0.0) but sigma_parallax=!0*/
+Distance_spread=0						/*Omits perfect data and parallax_obs=1/gauss(d,err_pi/pi**2)*/
+Noerrorbutobs_para=0					/*Uncertanties in parallax force to be zero after the dispersion data*/
+Fudge_Factor=0							/*Add a fudge factor to observables. 1=yes------->pi_obs=gauss(pi,f*unc_pi)*/
+Values_Fudge=1.0,0.5,0.25,0.10,0.05,0.025,0.01,0.005,0.0 /*Specific fudge values. Same as samples (previous question= 1)*/
+Mark_trick=0							/*Correct by parallax dsitance transformations*/
+Only_nice_sources=0						/*Only print out sources with good parallax estimation (10% error at max)*/
+############################################################################################################################
+#Root Surveys File (MMB_Dist_Flux_edited.csv and Arecibo_2.txt)
+############################################################################################################################
+Root_Surveys=../../../../../../surveys/ /*Leave it unless you change the directories of surveys*/
